@@ -5,7 +5,7 @@
 #include <ctime>
 #include <random>
 #include <QMessageBox>
-
+#include <list>
 namespace gft{
 
 class Conjunto

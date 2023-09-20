@@ -29,27 +29,13 @@ void MainWindow::on_pushButtonGerar_clicked()
         obj = new gft::Conjunto (ui->lineEditQuantElementos->text().toInt());
         ui->textEditSaida->setText(obj->obterVetor());
         ui->textEditSelectionSort->setText(obj->obterVetorSelectionSort());
+        ui->textEdit_5->setText(QString::number(obj->getExecucoes()));
 
 
     } catch (QString &erro) {
         QMessageBox::critical(this,"ERRO DO SISTEMA",erro);
     }
 
-}
-
-void MainWindow::on_pushButtonBuscar_clicked()
-{
-    try {
-        if(ui->lineEditQuantElementos->text().isEmpty()){
-            ui->lineEditQuantElementos->setFocus();
-            throw QString ("Por favor insira o numero da posicao");
-        }
-        ui->textEditResultadoMelhorada->setText("O numero que deseja esta na posicao: [" +
-                                       QString::number(obj->buscarNumMelhorado(ui->lineEditValorMelhorada->text().toInt())) + "]");
-        ui->lineEditValorMelhorada->setFocus();
-    } catch (QString &erro) {
-        QMessageBox::critical(this,"ERRO DO SISTEMA",erro);
-    }
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -59,9 +45,16 @@ void MainWindow::on_pushButton_clicked()
             ui->lineEditValor->setFocus();
             throw QString ("Por favor insira algum numero que tenha no vetor");
         }
-        ui->textEditResultado->setText("O numero que deseja esta na posicao: [" +
-                                         QString::number(obj->BuscarNum(ui->lineEditValor->text().toInt())) + "]");
-        ui->textEdit->setText(QString::number(obj->getExecucoes()));
+        if(obj->BuscarNum(ui->lineEditValor->text().toInt()) == -1){
+            ui->textEdit->setText(QString::number(obj->getExecucoes()));
+            ui->textEditResultado->clear();
+            throw QString ("Numero nao encontrado");
+        }
+        else{
+            ui->textEditResultado->setText("O numero que deseja esta na posicao: [" +
+                                                    QString::number(obj->BuscarNum(ui->lineEditValor->text().toInt())) + "]");
+            ui->textEdit->setText(QString::number(obj->getExecucoes()));
+        }
         ui->lineEditValor->setFocus();
     } catch (QString &erro) {
         QMessageBox::critical(this,"ERRO DO SISTEMA",erro);
@@ -75,9 +68,16 @@ void MainWindow::on_pushButtonMelhorada_clicked()
             ui->lineEditValorMelhorada->setFocus();
             throw QString ("Por favor insira algum numero que tenha no vetor");
         }
-        ui->textEditResultadoMelhorada->setText("O numero que deseja esta na posicao: [" +
-                                                QString::number(obj->buscarNumMelhorado(ui->lineEditValorMelhorada->text().toInt())) + "]");
-        ui->textEdit_2->setText(QString::number(obj->getExecucoes()));
+        if(obj->buscarNumMelhorado(ui->lineEditValorMelhorada->text().toInt()) == -1){
+            ui->textEdit_2->setText(QString::number(obj->getExecucoes()));
+            ui->textEditResultadoMelhorada->clear();
+            throw QString ("Numero nao encontrado");
+        }
+        else{
+            ui->textEditResultadoMelhorada->setText("O numero que deseja esta na posicao: [" +
+                                                    QString::number(obj->buscarNumMelhorado(ui->lineEditValorMelhorada->text().toInt())) + "]");
+            ui->textEdit_2->setText(QString::number(obj->getExecucoes()));
+        }
         ui->lineEditValorMelhorada->setFocus();
     } catch (QString &erro) {
         QMessageBox::critical(this,"ERRO DO SISTEMA",erro);
@@ -91,10 +91,16 @@ void MainWindow::on_pushButtonBinario_clicked()
             ui->lineEditValorBi->setFocus();
             throw QString ("Por favor insira algum numero que tenha no vetor");
         }
-        ui->textEditResultadoBi->setText("O numero que deseja esta na posicao: [" +
-                                         QString::number(obj->buscaBinaria(ui->lineEditValorBi->text().toInt())) + "]");
-        ui->textEdit_3->setText(QString::number(obj->getExecucoes()));
-        ui->lineEditValorBi->setFocus();
+        if(obj->buscaBinaria(ui->lineEditValorBi->text().toInt()) == -1){
+            ui->textEdit_3->setText(QString::number(obj->getExecucoes()));
+            ui->textEditResultadoBi->clear();
+            throw QString ("Numero nao encontrado");
+        }
+        else{
+            ui->textEditResultadoBi->setText("O numero que deseja esta na posicao: [" +
+                                                    QString::number(obj->buscaBinaria(ui->lineEditValorBi->text().toInt())) + "]");
+            ui->textEdit_3->setText(QString::number(obj->getExecucoes()));
+        }
     } catch (QString &erro) {
         QMessageBox::critical(this,"ERRO DO SISTEMA",erro);
     }

@@ -61,12 +61,14 @@ QString Conjunto::obterVetor() const
 
 void Conjunto::selectionSort()
 {
+    this->execucoes=0;
     for (int step = 0; step < tamanho - 1; ++step) {
         int min_idx = step;
         for (int i = step + 1; i < tamanho; ++i) {
             if (arraySelectionSort[i] < arraySelectionSort[min_idx]) { // Condição corrigida
                 min_idx = i;
             }
+            execucoes++;
         }
         int aux = arraySelectionSort[step];
         arraySelectionSort[step] = arraySelectionSort[min_idx];
@@ -97,10 +99,11 @@ int Conjunto::buscarNumMelhorado(int aux)
         execucoes++;
         if(aux == arraySelectionSort[i])
             return i;
-        if(aux < arraySelectionSort[i])
-            throw QString("Percorri todo o vetor e nao encontrei o valor desejado");
+        if(aux < arraySelectionSort[i]){
+            return -1;
+        }
     }
-    throw QString ("O numero desejado nao existe");
+    return -1;
 }
 
 int Conjunto::buscaBinaria(int x)
@@ -117,7 +120,7 @@ int Conjunto::buscaBinaria(int x)
             fim = meio - 1;
         }
     }
-    throw QString ("O numero desejado nao existe - buscaBinaria");
+    return -1;
 }
 
 int Conjunto::BuscarNum(int aux)
@@ -129,7 +132,8 @@ int Conjunto::BuscarNum(int aux)
         if(aux == array[i])
             return i;
     }
-    throw QString ("O numero desejado nao existe");
+    execucoes++;
+    return -1;
 }
 
 }
