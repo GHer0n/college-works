@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Recursos/puc-goias-vertical-logo-6B1DC20460-seeklogo.com.png</file>
+        <file>Recursos/Imagem.jpg</file>
+    </qresource>
+</RCC>
