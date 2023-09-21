@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "conjunto.h"
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QRegularExpressionValidator>
@@ -22,16 +21,7 @@ private slots:
 
     void on_pushButtonGerar_clicked();
 
-    void on_pushButton_clicked();
-
-    void on_pushButtonBuscar_clicked();
-
-    void on_pushButtonBinario_clicked();
-
-    void on_pushButtonMelhorada_clicked();
-
 private:
     Ui::MainWindow *ui;
-    gft::Conjunto *obj;
 };
 #endif // MAINWINDOW_H
