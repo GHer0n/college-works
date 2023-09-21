@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Fotos/5381b99b-744e-4884-991c-aff57dbb6a9a (1).jpeg</file>
+        <file>Fotos/puc-goias-vertical-logo-6B1DC20460-seeklogo.com.png</file>
+    </qresource>
+</RCC>
